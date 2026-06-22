@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "threshold": 35,
+  "patterns": [
+    {
+      "id": "motion-guard",
+      "tier": "conditional",
+      "weight": 2,
+      "regex": "reducedMotion\\s*\\?\\s*\\{\\}\\s*:"
+    },
+    {
+      "id": "should-reduce-motion",
+      "tier": "conditional",
+      "weight": 1,
+      "regex": "shouldReduceMotion\\(\\)"
+    },
+    {
+      "id": "inline-schema-org",
+      "tier": "conditional",
+      "weight": 5,
+      "regex": "\"@context\"\\s*:\\s*\"https://schema\\.org\""
+    },
+    {
+      "id": "duplicate-easing",
+      "tier": "conditional",
+      "weight": 4,
+      "regex": "0\\.25,\\s*0\\.46,\\s*0\\.45,\\s*0\\.94"
+    },
+    {
+      "id": "section-shell-class",
+      "tier": "conditional",
+      "weight": 2,
+      "regex": "section-shell|className=\"section"
+    },
+    {
+      "id": "animation-label-comment",
+      "tier": "safe",
+      "weight": 2,
+      "regex": "^\\s*//\\s*(Fade in|Stagger|Scale fade|Button hover|Card hover|Default transition|Check for reduced)",
+      "lineStart": true
+    },
+    {
+      "id": "tutorial-setup-comment",
+      "tier": "safe",
+      "weight": 3,
+      "regex": "^\\s*//\\s*(If |When |Language is |Fallback:|This function|Defensive:|Future mapping)",
+      "lineStart": true
+    },
+    {
+      "id": "dnd-any-type",
+      "tier": "conditional",
+      "weight": 5,
+      "regex": "\\(item:\\s*any|item:\\s*any,"
+    },
+    {
+      "id": "hooks-rule-disable",
+      "tier": "flag",
+      "weight": 10,
+      "regex": "eslint-disable.*react-hooks/rules-of-hooks"
+    },
+    {
+      "id": "stub-not-wired",
+      "tier": "conditional",
+      "weight": 4,
+      "regex": "not yet wired|TODO:\\s*replace"
+    },
+    {
+      "id": "exhaustive-deps-disable",
+      "tier": "conditional",
+      "weight": 4,
+      "regex": "eslint-disable.*react-hooks/exhaustive-deps"
+    }
+  ],
+  "aggregates": [
+    {
+      "id": "motion-copy-paste",
+      "countPattern": "should-reduce-motion",
+      "minCount": 6,
+      "weight": 14,
+      "tier": "conditional",
+      "message": "shouldReduceMotion() copied across many files — extract AnimatedSection wrapper"
+    },
+    {
+      "id": "motion-guard-copy-paste",
+      "countPattern": "motion-guard",
+      "minCount": 8,
+      "weight": 12,
+      "tier": "conditional",
+      "message": "reducedMotion ? {} : … guard repeated — use shared motion helper"
+    },
+    {
+      "id": "section-factory",
+      "countPattern": "section-header-import",
+      "minCount": 5,
+      "weight": 10,
+      "tier": "conditional",
+      "message": "Many SectionHeader sections with identical motion shell — landing-page template smell"
+    },
+    {
+      "id": "dnd-any-copy-paste",
+      "countPattern": "dnd-any-type",
+      "minCount": 4,
+      "weight": 12,
+      "tier": "flag",
+      "message": "react-dnd handlers typed as any — define DragItem interface"
+    }
+  ],
+  "fileRules": {
+    "minLines": 200,
+    "medianMultiplier": 2.2,
+    "weight": 10,
+    "tier": "conditional"
+  },
+  "deadExport": {
+    "glob": "**/lib/*.ts",
+    "weight": 4,
+    "maxFindings": 8,
+    "tier": "conditional"
+  }
+}

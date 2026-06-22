@@ -115,7 +115,7 @@ Full list: [PATTERNS.md](PATTERNS.md)
 | --- | ------------------ | ------------------------------ | ----------------------- |
 | 11  | Over-engineering   | Factory for one use case       | Plain function          |
 | 12  | Single-use helpers | 3-line fn called once          | Inline                  |
-| 13  | Status envelopes   | `{ status: 'success', data }`  | Return `data` or throw  |
+| 13  | Response envelopes | `{ status: 'success' }` or `{ ok: true }` | Return data or throw if API allows |
 | 14  | Eerie uniformity   | Same comment style on every fn | Match neighbor variance |
 
 
@@ -160,6 +160,21 @@ Full list: [PATTERNS.md](PATTERNS.md)
 
 Won't add npm packages without you saying so.
 
+## Scope (honest)
+
+v1.1 scores **regex slop** and **structural slop**. AI landing pages often pass the first and fail the second.
+
+| Slop (regex) | Structural |
+|--------------|------------|
+| Comments, naming, tutorial voice | `shouldReduceMotion()` copy-pasted 6+ times |
+| Library rewrites when dep exists | Section factory (many `SectionHeader` sections) |
+| Swallow-all catch (report only) | 600 LOC components, dead exports in `lib/` |
+| `ok:` envelopes (flag) | Inline schema.org in page files |
+
+Out of scope: shadcn `components/ui/`, framework-required MCP handlers.
+
+Details: [SCOPE.md](SCOPE.md). Fixture: [examples/05-landing/notes.md](examples/05-landing/notes.md).
+
 ## Full Example
 
 **Before:**
@@ -200,13 +215,23 @@ More in [examples/](examples/).
 
 ## Scoring
 
-`scripts/score.py` is stdlib Python. Lower is better; 35 or under passes.
+Dual score — both must pass (default threshold 35 each):
 
 ```bash
 python scripts/score.py --repo /path/to/your/app --base main --json
 ```
 
-Copy [.nomoresloprc.example](.nomoresloprc.example) to `.nomoresloprc` in the repo you're cleaning up.
+| Field | Meaning |
+|-------|---------|
+| `slopScore` | Comments, naming, regex tells |
+| `structuralScore` | Motion copy-paste, section factories, file bloat, dead exports |
+| `passed` | Both scores ≤ threshold |
+
+Copy [.nomoresloprc.example](.nomoresloprc.example) → `.nomoresloprc`. Per-repo templates: [configs/web-hq.nomoresloprc.json](configs/web-hq.nomoresloprc.json), [configs/mcp-devkit.nomoresloprc.json](configs/mcp-devkit.nomoresloprc.json).
+
+Use `envelopeAllowlist` + `envelopeIgnoreInTests` so MCP/API `ok:` patterns are not counted as slop.
+
+Structural patterns: [patterns/PATTERNS-STRUCTURAL.md](patterns/PATTERNS-STRUCTURAL.md).
 
 ## Modes
 
@@ -223,11 +248,14 @@ Copy [.nomoresloprc.example](.nomoresloprc.example) to `.nomoresloprc` in the re
 - [blader/humanizer](https://github.com/blader/humanizer)
 - [PATTERNS.md](PATTERNS.md)
 - [LIBRARIES.md](LIBRARIES.md)
+- [SCOPE.md](SCOPE.md)
 - [docs/rocky-workflow.md](docs/rocky-workflow.md)
 
 ## Version History
 
-- **1.0.0** - 22 patterns, neighbor calibration, library rewrites, bundled scorer.
+- **1.2.0** - Prototype patterns (dnd any, hooks FLAG, duplicate modules, directory bloat); Rocky escalation
+- **1.1.0** - Dual slop + structural score; landing-page patterns; node_modules fix
+- **1.0.0** - 22 code slop patterns, style calibration, library-aware rewrites, bundled `score.py`.
 
 ## License
 

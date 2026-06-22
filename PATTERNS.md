@@ -61,9 +61,9 @@ Tutorial phrasing.
 // skip invalid rows from legacy import
 ```
 
-### 5. `emoji-narration` (SAFE)
+### 5. `emoji-narration` / `narration-log` (SAFE / CONDITIONAL)
 
-Emoji or narration in logs.
+Emoji or tutorial narration in logs. Plain startup logs (`console.log('listening on 3000')`) are fine.
 
 ```typescript
 // Before
@@ -131,15 +131,20 @@ Factory/ABC for one use → plain function.
 
 Three-line helper called once → inline.
 
-### 13. `status-envelope` (CONDITIONAL)
+### 13. `response-envelope` (CONDITIONAL)
+
+`status: "success"` or `ok: true/false` wrappers when the repo usually returns data or throws.
 
 ```typescript
 // Before
 return { status: "success", data: user };
+return makeEnvelope({ ok: true, data: user });
 
-// After
+// After (when neighbors don't use envelopes)
 return user;
 ```
+
+Keep the envelope if the API contract or MCP tool schema requires it. Score only; don't auto-strip.
 
 ### 14. `eerie-uniformity` (CONDITIONAL)
 

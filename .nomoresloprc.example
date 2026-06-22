@@ -1,7 +1,23 @@
 {
   "threshold": 35,
+  "structuralThreshold": 35,
   "defaultMode": "calibrate",
   "verify": [],
-  "ignore": ["src/legacy/**", "**/*.generated.ts"],
+  "envelopeIgnoreInTests": true,
+  "envelopeAllowlist": [
+    "**/register-*-tools.ts",
+    "**/register-*.ts",
+    "src/mcp/lib/*-core.ts",
+    "api/health.ts",
+    "server/chatbot-proxy/**"
+  ],
+  "ignore": [
+    "src/legacy/**",
+    "**/*.generated.ts",
+    "**/prompts/**",
+    "**/*-templates.ts",
+    "**/components/ui/**",
+    "e2e/**"
+  ],
   "libraries": ".nomoreslop/libraries.local.json"
 }

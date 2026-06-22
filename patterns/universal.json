@@ -8,12 +8,12 @@
     { "id": "placeholder-todo", "tier": "safe", "weight": 3, "regex": "TODO:\\s*(your logic|implement|add code|fill in)", "flags": "i" },
     { "id": "verbose-names", "tier": "conditional", "weight": 5, "regex": "\\b(total|complete|full)(User|Account|Input|Output)[A-Z]\\w{8,}" },
     { "id": "generic-names", "tier": "conditional", "weight": 5, "regex": "\\b(processData|handleData|fetchData|userDataList)\\b" },
-    { "id": "status-envelope", "tier": "conditional", "weight": 5, "regex": "status['\"]?\\s*:\\s*['\"]success['\"]" },
-    { "id": "swallow-except", "tier": "flag", "weight": 8, "regex": "catch\\s*\\([^)]*\\)\\s*\\{\\s*\\}|except\\s*:\\s*pass" },
-    { "id": "markdown-in-comments", "tier": "safe", "weight": 3, "regex": "(//|#)\\s*[#*]{1,2}\\s" },
+    { "id": "response-envelope", "tier": "conditional", "weight": 5, "regex": "status['\"]?\\s*:\\s*['\"]success['\"]|\\bok\\s*:\\s*(true|false)|makeEnvelope\\s*\\(\\s*\\{\\s*ok\\s*:" },
+    { "id": "swallow-except", "tier": "flag", "weight": 8, "regex": "catch\\s*\\([^)]*\\)\\s*\\{\\s*\\}|catch\\s*\\{\\s*\\}|except\\s*:\\s*pass" },
+    { "id": "markdown-in-comments", "tier": "safe", "weight": 3, "regex": "^\\s*(//|#)\\s*[#*]{1,2}\\s", "lineStart": true },
     { "id": "non-idiomatic-loop", "tier": "conditional", "weight": 5, "regex": "range\\(len\\(|for\\s*\\(\\s*let\\s+\\w+\\s*=\\s*0;\\s*\\w+\\s*<\\s*\\w+\\.length" },
     { "id": "json-clone", "tier": "conditional", "weight": 6, "regex": "JSON\\.parse\\(\\s*JSON\\.stringify" },
-    { "id": "debug-log", "tier": "safe", "weight": 3, "regex": "console\\.log\\(" },
+    { "id": "narration-log", "tier": "conditional", "weight": 4, "regex": "console\\.(log|info|debug)\\([^)]*(Successfully|successfully|An error occurred|Debug:|ERROR:|WARN:)" },
     { "id": "manual-groupby-reduce", "tier": "conditional", "weight": 6, "regex": "Object\\.keys\\([^)]+\\)\\.reduce|reduce\\(\\s*\\(\\s*acc" }
   ]
 }
