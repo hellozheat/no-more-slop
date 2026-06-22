@@ -1,0 +1,7 @@
+{
+  "threshold": 35,
+  "defaultMode": "calibrate",
+  "verify": [],
+  "ignore": ["src/legacy/**", "**/*.generated.ts"],
+  "libraries": ".nomoreslop/libraries.local.json"
+}

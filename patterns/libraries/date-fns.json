@@ -1,0 +1,15 @@
+{
+  "package": "date-fns",
+  "aliases": ["dayjs"],
+  "tier": "core",
+  "version": 1,
+  "rules": [
+    {
+      "id": "manual-date-format",
+      "detect": { "regex": "toISOString\\(\\)\\.slice\\(|getFullYear\\(\\).*getMonth" },
+      "suggest": { "import": "format", "usage": "format(date, 'yyyy-MM-dd')" },
+      "slopWeight": 6,
+      "rewriteTier": "conditional"
+    }
+  ]
+}

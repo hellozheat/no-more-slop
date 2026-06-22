@@ -1,0 +1,22 @@
+{
+  "package": "lodash",
+  "aliases": ["lodash-es"],
+  "tier": "core",
+  "version": 1,
+  "rules": [
+    {
+      "id": "manual-groupby",
+      "detect": { "regex": "Object\\.keys\\([^)]+\\)\\.reduce|reduce\\(\\s*\\(\\s*acc" },
+      "suggest": { "import": "groupBy", "usage": "groupBy(items, 'key')" },
+      "slopWeight": 6,
+      "rewriteTier": "conditional"
+    },
+    {
+      "id": "json-clone-lodash",
+      "detect": { "regex": "JSON\\.parse\\(\\s*JSON\\.stringify" },
+      "suggest": { "native": "structuredClone", "import": "cloneDeep", "usage": "cloneDeep(x)" },
+      "slopWeight": 6,
+      "rewriteTier": "conditional"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "package": "zod",
+  "aliases": [],
+  "tier": "core",
+  "version": 1,
+  "rules": [
+    {
+      "id": "manual-validation",
+      "detect": { "regex": "if\\s*\\(!\\s*\\w+\\.(email|length|trim)\\(\\)" },
+      "suggest": { "import": "z", "usage": "z.object({ email: z.string().email() })" },
+      "slopWeight": 6,
+      "rewriteTier": "conditional"
+    }
+  ]
+}

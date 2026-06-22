@@ -1,0 +1,30 @@
+name: nomoreslop score
+
+on:
+  pull_request:
+    paths:
+      - "**/*.ts"
+      - "**/*.tsx"
+      - "**/*.js"
+      - "**/*.jsx"
+      - "**/*.py"
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Clone nomoreslop skill
+        run: git clone --depth 1 https://github.com/hellozheat/no-more-slop.git /tmp/nomoreslop
+      - name: Score diff
+        run: |
+          python /tmp/nomoreslop/scripts/score.py \
+            --repo . \
+            --base origin/${{ github.base_ref }} \
+            --threshold 35 \
+            --json

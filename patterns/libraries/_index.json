@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "packages": [
+    { "id": "lodash", "file": "lodash.json", "tier": "core" },
+    { "id": "date-fns", "file": "date-fns.json", "tier": "core" },
+    { "id": "zod", "file": "zod.json", "tier": "core" }
+  ]
+}
