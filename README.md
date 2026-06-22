@@ -173,7 +173,7 @@ v1.1 scores **regex slop** and **structural slop**. AI landing pages often pass 
 
 Out of scope: shadcn `components/ui/`, framework-required MCP handlers.
 
-Details: [SCOPE.md](SCOPE.md). Fixture: [examples/05-landing/notes.md](examples/05-landing/notes.md).
+Details: [SCOPE.md](SCOPE.md).
 
 ## Full Example
 
@@ -227,7 +227,7 @@ python scripts/score.py --repo /path/to/your/app --base main --json
 | `structuralScore` | Motion copy-paste, section factories, file bloat, dead exports |
 | `passed` | Both scores ≤ threshold |
 
-Copy [.nomoresloprc.example](.nomoresloprc.example) → `.nomoresloprc`. Per-repo templates: [configs/web-hq.nomoresloprc.json](configs/web-hq.nomoresloprc.json), [configs/mcp-devkit.nomoresloprc.json](configs/mcp-devkit.nomoresloprc.json).
+Copy [.nomoresloprc.example](.nomoresloprc.example) → `.nomoresloprc` to set thresholds, `envelopeAllowlist`, and ignore paths.
 
 Use `envelopeAllowlist` + `envelopeIgnoreInTests` so MCP/API `ok:` patterns are not counted as slop.
 

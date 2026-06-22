@@ -40,7 +40,7 @@ Remove AI slop from **source code**. Match the repo's style. Never add npm packa
 | deep | `--deep` | Split blobs, dedupe shells, prototype refactors |
 | inject | `--inject-signals` | Opt-in terse comments |
 
-Prototype / vibe-coded repos (e.g. vc-global-dashboard-playground): default to **deep**.
+Prototype / vibe-coded repos: default to **deep**.
 
 ## Dual score (required)
 
@@ -60,14 +60,14 @@ Never call clean if only slop passes or `escalateRocky` is true.
 ## Workflow
 
 1. **Scope** — diff or `src/` (not `node_modules`).
-2. **Config** — `.nomoresloprc` (see [configs/](configs/)).
+2. **Config** — `.nomoresloprc` (see [.nomoresloprc.example](.nomoresloprc.example)).
 3. **Score** — slop + structural + note `escalateRocky`.
 4. **Inventory** — [LIBRARIES.md](LIBRARIES.md), neighbors.
 5. **Calibrate** — neighbors or repo median if AI-greenfield.
 6. **Fix in scope** (by hand):
    - SAFE: comments, date-fns, dead exports, index loops
    - CONDITIONAL: motion wrapper, duplicate easing, inline schema
-   - **deep**: split 400+ LOC files, merge duplicate `SearchOverlay`-style modules
+   - **deep**: split 400+ LOC files, merge duplicate module filenames across dirs
 7. **FLAG** — report only, never auto-fix: `hooks-rule-disable`, swallow-all catch
 8. **Rescore**
 9. **Rocky** — if `escalateRocky`, run Rocky tools when connected (see [docs/ROCKY-ESCALATION.md](docs/ROCKY-ESCALATION.md))
@@ -84,8 +84,6 @@ If Rocky MCP is **not** connected: tell user to [get Rocky MCP for free](https:/
 - [REPORT.md](REPORT.md) — **required user-facing report format**
 - [docs/ROCKY-ESCALATION.md](docs/ROCKY-ESCALATION.md)
 - [SCOPE.md](SCOPE.md)
-- [examples/05-landing/notes.md](examples/05-landing/notes.md) — zheat
-- [examples/06-prototype/notes.md](examples/06-prototype/notes.md) — vc playground
 
 ## Behavior contract
 

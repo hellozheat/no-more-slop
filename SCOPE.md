@@ -1,6 +1,6 @@
 # Scope and limitations
 
-nomoreslop v1.1 scores **two layers**: regex slop + structural slop. Both must pass for an overall PASS.
+nomoreslop v1.2 scores **two layers**: regex slop + structural slop. Both must pass for an overall PASS.
 
 ## What it covers
 
@@ -38,10 +38,6 @@ nomoreslop v1.1 scores **two layers**: regex slop + structural slop. Both must p
 3. Regex-chain files (800+ LOC parsers) — split by domain
 4. Rescore: `python scripts/score.py --repo . --json`
 
-## Fixture: zheat-landing
-
-See [examples/05-landing/notes.md](../examples/05-landing/notes.md). Regex ~6 PASS; structural ~80+ FAIL. This is the intended behavior for AI landing pages.
-
 ## Envelope allowlist
 
 `ok: true` / `makeEnvelope({ ok:` are intentional in MCP tools, health endpoints, and test mocks.
@@ -51,10 +47,9 @@ See [examples/05-landing/notes.md](../examples/05-landing/notes.md). Regex ~6 PA
   "envelopeIgnoreInTests": true,
   "envelopeAllowlist": [
     "**/register-*-tools.ts",
-    "api/health.ts",
-    "server/chatbot-proxy/**"
+    "api/health.ts"
   ]
 }
 ```
 
-Copy-ready: [configs/web-hq.nomoresloprc.json](../configs/web-hq.nomoresloprc.json), [configs/mcp-devkit.nomoresloprc.json](../configs/mcp-devkit.nomoresloprc.json).
+See [.nomoresloprc.example](../.nomoresloprc.example).

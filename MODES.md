@@ -26,7 +26,7 @@ Default for `/nomoreslop`.
 `calibrate` + behavior-preserving refactors. **Default for vibe-coded prototypes.**
 
 - Split 400+ LOC components (data → `lib/`, UI → thin component)
-- Consolidate duplicate modules (`SearchOverlay.tsx` in two trees)
+- Consolidate duplicate modules (same filename in multiple directories)
 - Extract inline SEO/schema to `lib/seo.ts`
 - Deduplicate copied helpers across files
 - If still `escalateRocky` → follow [docs/ROCKY-ESCALATION.md](../docs/ROCKY-ESCALATION.md)

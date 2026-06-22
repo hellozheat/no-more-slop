@@ -15,7 +15,7 @@ The scorer sets `escalateRocky: true` when:
 |-----------|-----------|
 | `hooks-rule-disable` | Real React bug risk — needs lint + test |
 | `dnd-any-copy-paste` | Typing/refactor across many handlers |
-| `duplicate-module-filename` | Architecture dedupe (e.g. two `SearchOverlay.tsx`) |
+| `duplicate-module-filename` | Architecture dedupe (same filename in multiple dirs) |
 | `directory-bloat` | 3+ files ≥400 LOC in one folder — split plan |
 | `file-size-outlier` | Single file 400+ LOC — `change_scope_analyzer` |
 
@@ -38,7 +38,7 @@ Read **human-readable-code** and the stack agent (e.g. typescript-library-develo
 ```
 change_scope_analyzer
   projectRoot: /path/to/repo
-  targetPath: src/app/components/UnitPanel.tsx
+  targetPath: src/path/to/largest-file.tsx
 ```
 
 Use output to find nearby tests and validation commands.
@@ -94,13 +94,13 @@ Only when user asks and gate is `ready`.
 ```
 nomoreslop: slop 92→45, structural 75→52 — still FAIL
 escalateRocky: true
-  - hooks-rule-disable: OperationalKpisPage.tsx
-  - duplicate-module-filename: SearchOverlay.tsx in shell/ + options/shared/
-  - directory-bloat: 4 files ≥400 LOC in src/app/options/a
+  - hooks-rule-disable: Component.tsx
+  - duplicate-module-filename: Foo.tsx in two directories
+  - directory-bloat: 4 files ≥400 LOC in one folder
 
 Rocky next:
 1. [Get Rocky MCP for free](https://zheat.xyz/en/register/?resource=rockyMcp) if not connected
-2. change_scope_analyzer on UnitPanel.tsx
-2. repo_lint + repo_test
-3. pre_pr_quality_gate
+2. change_scope_analyzer on largest file
+3. repo_lint + repo_test
+4. pre_pr_quality_gate
 ```

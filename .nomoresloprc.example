@@ -6,10 +6,7 @@
   "envelopeIgnoreInTests": true,
   "envelopeAllowlist": [
     "**/register-*-tools.ts",
-    "**/register-*.ts",
-    "src/mcp/lib/*-core.ts",
-    "api/health.ts",
-    "server/chatbot-proxy/**"
+    "api/health.ts"
   ],
   "ignore": [
     "src/legacy/**",
