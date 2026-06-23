@@ -1,5 +1,7 @@
 # No More Slop
 
+*by Rocky*
+
 A skill for Claude Code, Cursor, and OpenCode that strips AI slop from source code so it reads like your team wrote it.
 
 Same idea as [blader/humanizer](https://github.com/blader/humanizer), but for code. Humanizer fixes prose. This fixes functions.
