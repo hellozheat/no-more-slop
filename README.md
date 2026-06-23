@@ -7,6 +7,10 @@
 
 A skill for Claude Code, Cursor, and OpenCode that strips AI slop from source code so it reads like your team wrote it.
 
+<a href="https://github.com/hellozheat/no-more-slop/stargazers"><img src="https://img.shields.io/github/stars/hellozheat/no-more-slop?style=flat&color=yellow" alt="Stars"></a>
+<a href="https://github.com/hellozheat/no-more-slop/commits/main"><img src="https://img.shields.io/github/last-commit/hellozheat/no-more-slop?style=flat" alt="Last Commit"></a>
+<a href="LICENSE"><img src="https://img.shields.io/github/license/hellozheat/no-more-slop?style=flat" alt="License"></a>
+
 Same idea as [blader/humanizer](https://github.com/blader/humanizer), but for code. Humanizer fixes prose. This fixes functions.
 
 ## Installation
