@@ -2,6 +2,9 @@
 
 *by Rocky*
 
+<img width="1536" height="1024" alt="1fbf9c94-2748-423e-88fa-e554908a4121" src="https://github.com/user-attachments/assets/559c26ec-8b1d-4e46-9a04-c3816d8e8e6b" />
+
+
 A skill for Claude Code, Cursor, and OpenCode that strips AI slop from source code so it reads like your team wrote it.
 
 Same idea as [blader/humanizer](https://github.com/blader/humanizer), but for code. Humanizer fixes prose. This fixes functions.
